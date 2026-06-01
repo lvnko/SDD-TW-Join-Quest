@@ -16,3 +16,32 @@
 1. 加入水球軟體學院 Discord：https://discord.gg/uWGTF7RSnW
 2. 照著此 Discord 社群內 #加入研究計劃 置頂訊息的指示進行即可成功報名
 若你已準備好成為推動 AI × SDD/BDD 開發方法的革新者，誠摯邀請你完成報名，與來自全台的技術夥伴攜手共創。
+
+***
+
+### Python 環境設訂步驟
+
+1. **設定 Global 環境版本：** 專案每個任務都需要運行 `behave` 指令做測試，而此工具需要在 python 3.11.6 上運行，因此需要用以下指令設定環境：
+    ```bash
+    pyenv global 3.11.6 # 先把 global 的 python 版本設定在 3.11.6
+    python3 --version  # 若設定成功，這個指令會回覆 3.11.6
+    ```
+
+1. **創建專案虛擬環境：** 
+    ```bash
+    python3 -m venv .venv # Create a venv using python3.11 (pyenv should have it on your PATH)
+    source .venv/bin/activate # Activate it
+    pip install behave # Install behave
+    behave --no-capture # Now run your test
+    ```
+
+2. **恢復虛擬環境：** 當你關掉編輯器 (例：VSCode)，然後第二天又回來開始工作，可以用以下步驟恢復虛擬環境：   
+    ```bash
+    source .venv/bin/activate
+    ```
+
+5. **額外匹步:** To make this automatic so you never have to think about it, add a .envrc file to your repo root:
+    ```bash
+    echo "source .venv/bin/activate" > .envrc
+    ```
+    If you have direnv installed, it'll auto-activate the venv every time you cd into the project folder. Worth installing if you switch between projects often.
